@@ -30,11 +30,11 @@ func (db *databaseFQueue) pop() (err error, data []byte) {
 }
 
 func (db *databaseFQueue) count() (error, int) {
-	panic("implement me")
+	return ErrMethodNotImplemented, 0
 }
 
 func (db *databaseFQueue) extract() (error, int, [][]byte) {
-	panic("implement me")
+	return ErrMethodNotImplemented, 0, nil
 }
 
 func (db *databaseFQueue) append(data []byte) error {

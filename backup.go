@@ -5,7 +5,8 @@ import (
 )
 
 var (
-	ErrDatabaseIsNotOpen = errors.New("go-backup: database is not open")
+	ErrDatabaseIsNotOpen    = errors.New("go-backup: database is not open")
+	ErrMethodNotImplemented = errors.New("go-backup: method not implemented")
 )
 
 type Backup struct {
