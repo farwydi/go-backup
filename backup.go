@@ -14,8 +14,8 @@ type Backup struct {
 	db   DatabaseBackend
 }
 
-func NewBackup(backend DatabaseBackend) (error, *Backup) {
-	return nil, &Backup{
+func NewBackup(backend DatabaseBackend) *Backup {
+	return &Backup{
 		true,
 		backend,
 	}
