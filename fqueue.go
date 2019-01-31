@@ -30,11 +30,25 @@ func (db *databaseFQueue) pop() (err error, data []byte) {
 }
 
 func (db *databaseFQueue) count() (error, int) {
-	return ErrMethodNotImplemented, 0
+	return nil, db.fqueue.Contents
 }
 
-func (db *databaseFQueue) extract() (error, int, [][]byte) {
-	return ErrMethodNotImplemented, 0, nil
+func (db *databaseFQueue) extract() (err error, count int, arr [][]byte) {
+	arr = make([][]byte, 0)
+
+	for err != nil {
+		var d []byte
+		d, err = db.fqueue.Pop()
+		if err == fqueue.QueueEmpty {
+			break
+		}
+		if err != nil {
+			return err, 0, nil
+		}
+		arr = append(arr, d)
+	}
+
+	return nil, len(arr), arr
 }
 
 func (db *databaseFQueue) append(data []byte) error {
